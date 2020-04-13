@@ -1,0 +1,48 @@
+﻿<Window x:Class="AppEmail.SendNewLetter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:AppEmail"
+        mc:Ignorable="d"
+        Title="SendNewLetter" Height="450" Width="800">
+    <Grid x:Name="grid_newLetter" DataContext="{Binding}">
+        <DockPanel>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Width="760" Height="45" Orientation="Horizontal">
+                    <Label FontSize="25" Margin="0,0,300,0" Height="40" FontFamily="Tekton Pro" Padding="5,8,5,5" Foreground="#0D8BE6">New Mail</Label>
+
+                    <Button Name="SendBtn" Margin="0,0,20,0" Height="40" Width="150" Background="#73BCF1"
+                            BorderThickness="1" BorderBrush="#FFAED8F6" Foreground="Black" Command="{Binding ButtonSend}">Відправити</Button>
+
+                    <Button Name="CancelBtn" Height="40" Width="150" Background="#73BCF1"
+                            BorderThickness="1" BorderBrush="#AED8F6">Відмінити</Button>
+                </StackPanel>
+                <TextBox Name="ReceiverTB" Width="760" Background="#EDF6FD"
+                         Foreground="#0F4B86" FontSize="15" Padding="10,2,2,2" BorderThickness="0"
+                         md:HintAssist.Hint="Email@example.com..." Text="{Binding EMAIL_TO}"></TextBox>
+                <TextBox Name="SubjectTB" Width="760" Margin="0,5,0,0"
+                         Background="#EDF6FD" Foreground="#0F4B86" FontSize="15" Padding="10,2,2,2"
+                         BorderThickness="0" md:HintAssist.Hint="Subject..." Text="{Binding SUBJECT}"></TextBox>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
+                    <TextBox Name="AttachFileTB" Width="560" IsEnabled="False" Foreground="#1770C6" FontSize="15"
+                             Padding="10,2,2,2" BorderThickness="0" md:HintAssist.Hint="Select your attachment..."></TextBox>
+                    <Button Name="AttachBtn" Width="95" Margin="5,0,0,0" Background="#0D8BE6"
+                            Foreground="#EDF6FD" BorderThickness="0">Додати файл</Button>
+                    <Button Name="DeleteBtn" Width="95" Margin="5,0,0,0" Background="#0D8BE6"
+                            Foreground="#EDF6FD" BorderThickness="0">Видалити</Button>
+                </StackPanel>
+                <StackPanel x:Name="sp_emailBody">
+                <TextBox AcceptsReturn="True" TextAlignment="Justify" TextWrapping="Wrap" BorderThickness="0"
+                         Name="MessageTB" Margin="0,10,0,0" Padding="5" Background="#EDF6FD"
+                         Foreground="#0F4B86" Width="{Binding ElementName=sp_emailBody, Path=ActualWidth}"
+                         Height="{Binding ElementName=sp_emailBody, Path=ActualHeight}" FontSize="14"
+                         FontFamily="Arial Unicode"
+                         md:HintAssist.Hint="Write Your Email Here..." Text="{Binding BodyText}"></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
